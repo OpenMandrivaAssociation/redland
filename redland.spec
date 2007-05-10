@@ -1,6 +1,6 @@
 %define name    redland
-%define version 1.0.4
-%define release %mkrel 2
+%define version 1.0.6
+%define release %mkrel 1
 
 %define major	0
 %define libname %mklibname %name %major
@@ -15,7 +15,7 @@ Source:    	http://librdf.org/dist/source/%{name}-%{version}.tar.bz2
 URL:       	http://www.redland.opensource.ac.uk/
 BuildRequires: 	libxml2-devel libdb-devel
 BuildRequires:	w3c-libwww-devel swig MySQL-devel
-BuildRequires:	rasqal-devel >= 0.9.6
+BuildRequires:	rasqal-devel >= 0.9.14
 BuildRequires:	raptor-devel
 Requires:  	rasqal raptor
 BuildRoot: 	%_tmppath/%{name}-root
