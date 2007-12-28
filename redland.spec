@@ -1,5 +1,5 @@
 %define name    redland
-%define version 1.0.6
+%define version 1.0.7
 %define release %mkrel 1
 
 %define major	0
@@ -11,9 +11,9 @@ Version:   	%{version}
 Release:   	%{release}
 License: 	LGPL
 Group:     	Development/Other
-Source:    	http://librdf.org/dist/source/%{name}-%{version}.tar.bz2
+Source:    	http://librdf.org/dist/source/%{name}-%{version}.tar.gz
 URL:       	http://www.redland.opensource.ac.uk/
-BuildRequires: 	libxml2-devel libdb-devel
+BuildRequires: 	libxml2-devel db-devel
 BuildRequires:	w3c-libwww-devel swig MySQL-devel
 BuildRequires:	rasqal-devel >= 0.9.14
 BuildRequires:	raptor-devel
