@@ -1,6 +1,6 @@
 %define name    redland
-%define version 1.0.7
-%define release %mkrel 2
+%define version 1.0.8
+%define release %mkrel 1
 
 %define major	0
 %define libname %mklibname %name %major
