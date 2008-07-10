@@ -15,7 +15,7 @@ Source:    	http://librdf.org/dist/source/%{name}-%{version}.tar.gz
 URL:       	http://www.redland.opensource.ac.uk/
 BuildRequires: 	libxml2-devel db-devel
 BuildRequires:	w3c-libwww-devel swig MySQL-devel
-BuildRequires:	rasqal-devel >= 0.9.14
+BuildRequires:	rasqal-devel >= 0.9.16
 BuildRequires:	raptor-devel
 Requires:  	rasqal raptor
 BuildRoot: 	%_tmppath/%{name}-root
@@ -50,6 +50,7 @@ Libraries and includes files for developing programs based on %name.
 
 %build
 %configure2_5x --with-mysql --with-raptor=system --with-rasqal=system
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
