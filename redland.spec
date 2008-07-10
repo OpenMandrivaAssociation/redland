@@ -1,9 +1,10 @@
 %define name    redland
 %define version 1.0.8
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major	0
 %define libname %mklibname %name %major
+%define develname %mklibname -d %name
 
 Summary:   	Redland RDF Application Framework
 Name:      	%{name}
@@ -35,14 +36,16 @@ Group:          System/Libraries
 %description -n %{libname}
 Dynamic libraries from %name.
 
-%package -n %{libname}-devel
+%package -n %{develname}
 Summary: Header files and static libraries from %name
 Group: Development/Other
 Requires: %{libname} >= %{version}
-Provides: lib%{name}-devel = %{version}-%{release} %{name}-devel = %{version}-%{release} 
+Provides: lib%{name}-devel = %{version}-%{release}
+Provides: %{name}-devel = %{version}-%{release} 
 Obsoletes: %name-devel
+Obsoletes: %{mklibname -d %name 0}
 
-%description -n %{libname}-devel
+%description -n %{develname}
 Libraries and includes files for developing programs based on %name.
 
 %prep
@@ -85,9 +88,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n %libname
 %defattr(-,root,root)
-%_libdir/librdf.so.*
+%_libdir/librdf.so.%{major}*
 
-%files -n %libname-devel
+%files -n %develname
 %defattr(-, root, root)
 %multiarch %{multiarch_bindir}/redland-config
 %_bindir/redland-config
@@ -106,5 +109,3 @@ rm -rf $RPM_BUILD_ROOT
 %if %mdkversion < 200900
 %postun -n %libname -p /sbin/ldconfig
 %endif
-
-
