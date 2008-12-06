@@ -1,6 +1,6 @@
 %define name    redland
 %define version 1.0.8
-%define release %mkrel 2
+%define release %mkrel 3
 
 %define major	0
 %define libname %mklibname %name %major
@@ -19,7 +19,7 @@ BuildRequires:	w3c-libwww-devel swig MySQL-devel
 BuildRequires:	rasqal-devel >= 0.9.16
 BuildRequires:	raptor-devel
 Requires:  	rasqal raptor
-BuildRoot: 	%_tmppath/%{name}-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Redland is a library that provides a high-level interface for RDF
