@@ -15,7 +15,7 @@ Group:     	Development/Other
 Source:    	http://librdf.org/dist/source/%{name}-%{version}.tar.gz
 URL:       	http://www.redland.opensource.ac.uk/
 BuildRequires: 	libxml2-devel db-devel
-BuildRequires:	w3c-libwww-devel swig MySQL-devel
+BuildRequires:	w3c-libwww-devel swig mysql-devel
 BuildRequires:	rasqal-devel >= 0.9.16
 BuildRequires:	raptor-devel
 Requires:  	rasqal raptor
