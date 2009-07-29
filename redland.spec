@@ -1,6 +1,6 @@
 %define name    redland
-%define version 1.0.8
-%define release %mkrel 3
+%define version 1.0.9
+%define release %mkrel 1
 
 %define major	0
 %define libname %mklibname %name %major
@@ -56,24 +56,24 @@ Libraries and includes files for developing programs based on %name.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 # fix install command
 perl -p -i -e 's/install\ -c/install\ -D/g' `find -name Makefile`
 %makeinstall_std
-cp -f librdf/*.h $RPM_BUILD_ROOT/%_includedir/
+#cp -f librdf/*.h %{buildroot}/%_includedir/
 
 # don't include files from raptor or rasqal
-cd $RPM_BUILD_ROOT
+cd %{buildroot}
 rm -f `find -name '*rapper*'` `find -name '*raptor*'` `find -name 'ntriples.h'`
 rm -f `find -name '*rasqal*'` `find -name 'roqet'`
 
 # shouldn't be needing this?
-rm `find -name '*win32*'`
+rm -rf `find -name '*win32*'`
 
-%multiarch_binaries $RPM_BUILD_ROOT%{_bindir}/redland-config
+%multiarch_binaries %{buildroot}%{_bindir}/redland-config
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
@@ -94,9 +94,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %multiarch %{multiarch_bindir}/redland-config
 %_bindir/redland-config
-%_libdir/librdf.a
-%_libdir/librdf.la
-%_libdir/librdf.so
+%_libdir/*.a
+%_libdir/*.la
+%_libdir/*.so
+%_libdir/%{name}/*.a
+%_libdir/%{name}/*.la
+%_libdir/%{name}/*.so
 %_includedir/redland.h
 %_includedir/librdf.h 
 %_includedir/rdf_*.h
