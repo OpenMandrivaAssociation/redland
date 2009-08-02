@@ -1,6 +1,6 @@
 %define name    redland
 %define version 1.0.9
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major	0
 %define libname %mklibname %name %major
@@ -60,15 +60,6 @@ rm -rf %{buildroot}
 # fix install command
 perl -p -i -e 's/install\ -c/install\ -D/g' `find -name Makefile`
 %makeinstall_std
-#cp -f librdf/*.h %{buildroot}/%_includedir/
-
-# don't include files from raptor or rasqal
-cd %{buildroot}
-rm -f `find -name '*rapper*'` `find -name '*raptor*'` `find -name 'ntriples.h'`
-rm -f `find -name '*rasqal*'` `find -name 'roqet'`
-
-# shouldn't be needing this?
-rm -rf `find -name '*win32*'`
 
 %multiarch_binaries %{buildroot}%{_bindir}/redland-config
 
