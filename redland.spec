@@ -1,29 +1,30 @@
-%define name    redland
-%define version 1.0.9
-%define release %mkrel 3
-
 %define major	0
 %define libname %mklibname %name %major
 %define develname %mklibname -d %name
 
-Summary:   	Redland RDF Application Framework
-Name:      	%{name}
-Version:   	%{version}
-Release:   	%{release}
-License: 	LGPL
-Group:     	Development/Other
-Source:    	http://librdf.org/dist/source/%{name}-%{version}.tar.gz
-URL:       	http://www.redland.opensource.ac.uk/
+Name: redland
+Version: 1.0.9
+Release: %mkrel 4
+License: LGPL
+Summary: Redland RDF Application Framework
+Group: Development/Other
+Source: http://librdf.org/dist/source/%{name}-%{version}.tar.gz
+Patch0: redland-1.0.9-storage-link.patch
+Patch1: redland-1.0.9-sqlite-compile.patch
+URL: http://www.redland.opensource.ac.uk/
 BuildRequires: libxml2-devel 
 BuildRequires: db-devel
 BuildRequires: w3c-libwww-devel 
 BuildRequires: swig 
 BuildRequires: mysql-devel
+BuildRequires: postgresql-devel
+BuildRequires: sqlite3-devel
 BuildRequires: rasqal-devel >= 0.9.16
 BuildRequires: raptor-devel
+BuildRequires: gtk-doc
 Requires: rasqal 
 Requires: raptor
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Redland is a library that provides a high-level interface for RDF
@@ -54,9 +55,20 @@ Libraries and includes files for developing programs based on %name.
 
 %prep
 %setup -q
+%patch0 -p0 -b .orig
+%patch1 -p1 -b .orig
 
 %build
-%configure2_5x --with-mysql --with-raptor=system --with-rasqal=system
+autoreconf
+
+%configure2_5x \
+	--with-mysql \
+	--with-postgresql \
+	--with-raptor=system \
+	--with-rasqal=system \
+	--enable-gtk-doc
+	
+	
 %make
 
 %install
