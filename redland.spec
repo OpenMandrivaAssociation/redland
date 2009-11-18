@@ -4,7 +4,7 @@
 
 Name: redland
 Version: 1.0.9
-Release: %mkrel 4
+Release: %mkrel 5
 License: LGPL
 Summary: Redland RDF Application Framework
 Group: Development/Other
@@ -12,17 +12,21 @@ Source: http://librdf.org/dist/source/%{name}-%{version}.tar.gz
 Patch0: redland-1.0.9-storage-link.patch
 Patch1: redland-1.0.9-sqlite-compile.patch
 URL: http://www.redland.opensource.ac.uk/
-BuildRequires: libxml2-devel 
+BuildRequires: c-ares-devel
 BuildRequires: db-devel
-BuildRequires: w3c-libwww-devel 
-BuildRequires: swig 
+BuildRequires: gnutls-devel
+BuildRequires: gtk-doc
+BuildRequires: libtool
+BuildRequires: libtool-devel
+BuildRequires: libxml2-devel
 BuildRequires: mysql-devel
 BuildRequires: postgresql-devel
-BuildRequires: sqlite3-devel
-BuildRequires: rasqal-devel >= 0.9.16
 BuildRequires: raptor-devel
-BuildRequires: gtk-doc
-Requires: rasqal 
+BuildRequires: rasqal-devel >= 0.9.16
+BuildRequires: sqlite3-devel
+BuildRequires: swig
+BuildRequires: w3c-libwww-devel
+Requires: rasqal
 Requires: raptor
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -59,7 +63,7 @@ Libraries and includes files for developing programs based on %name.
 %patch1 -p1 -b .orig
 
 %build
-autoreconf
+sh ./autogen.sh
 
 %configure2_5x \
 	--with-mysql \
@@ -67,8 +71,7 @@ autoreconf
 	--with-raptor=system \
 	--with-rasqal=system \
 	--enable-gtk-doc
-	
-	
+
 %make
 
 %install
