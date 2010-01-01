@@ -3,15 +3,15 @@
 %define develname %mklibname -d %name
 
 Name: redland
-Version: 1.0.9
-Release: %mkrel 7
+Version: 1.0.10
+Release: %mkrel 1
 License: LGPL
 Summary: Redland RDF Application Framework
 Group: Development/Other
 Source: http://librdf.org/dist/source/%{name}-%{version}.tar.gz
-Patch0: redland-1.0.9-storage-link.patch
-Patch1: redland-1.0.9-sqlite-compile.patch
-URL: http://www.redland.opensource.ac.uk/
+#Patch0: redland-1.0.9-storage-link.patch
+#Patch1: redland-1.0.9-sqlite-compile.patch
+URL: http://librdf.org/
 BuildRequires: c-ares-devel
 BuildRequires: db-devel
 BuildRequires: gnutls-devel
@@ -59,8 +59,8 @@ Libraries and includes files for developing programs based on %name.
 
 %prep
 %setup -q
-%patch0 -p0 -b .orig
-%patch1 -p1 -b .orig
+#%patch0 -p0 -b .orig
+#%patch1 -p1 -b .orig
 
 %build
 sh ./autogen.sh
