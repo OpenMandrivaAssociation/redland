@@ -4,7 +4,7 @@
 
 Name: redland
 Version: 1.0.12
-Release: %mkrel 2
+Release: %mkrel 3
 License: LGPL
 Summary: Redland RDF Application Framework
 Group: Development/Other
@@ -59,6 +59,10 @@ Libraries and includes files for developing programs based on %name.
 
 %prep
 %setup -q
+#for now fix location of rasqal headers to match ours
+perl -pi -e 's/<rasqal.h>/<rasqal\/rasqal.h>/g' src/librdf.h
+perl -pi -e 's/<rasqal.h>/<rasqal\/rasqal.h>/g' src/rdf_init.h
+
 #%patch0 -p0 -b .orig
 #%patch1 -p1 -b .orig
 
