@@ -3,7 +3,7 @@
 %define develname %mklibname -d %name
 
 Name: redland
-Version: 1.0.11
+Version: 1.0.12
 Release: %mkrel 1
 License: LGPL
 Summary: Redland RDF Application Framework
