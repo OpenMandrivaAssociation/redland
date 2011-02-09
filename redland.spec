@@ -4,7 +4,7 @@
 
 Name: redland
 Version: 1.0.13
-Release: %mkrel 1
+Release: %mkrel 2
 License: LGPL
 Summary: Redland RDF Application Framework
 Group: Development/Other
@@ -19,7 +19,7 @@ BuildRequires: sqlite3-devel
 BuildRequires: rasqal-devel >= 0.9.22
 Conflicts: %{develname} <= 1.0.13
 Requires: rasqal
-Requires: raptor
+Requires: raptor2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
