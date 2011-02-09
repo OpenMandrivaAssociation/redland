@@ -3,29 +3,21 @@
 %define develname %mklibname -d %name
 
 Name: redland
-Version: 1.0.12
-Release: %mkrel 5
+Version: 1.0.13
+Release: %mkrel 1
 License: LGPL
 Summary: Redland RDF Application Framework
 Group: Development/Other
 Source: http://librdf.org/dist/source/%{name}-%{version}.tar.gz
-#Patch0: redland-1.0.9-storage-link.patch
-#Patch1: redland-1.0.9-sqlite-compile.patch
 URL: http://librdf.org/
-BuildRequires: c-ares-devel
-BuildRequires: db-devel
-BuildRequires: gnutls-devel
+BuildRequires: db4-devel
 BuildRequires: gtk-doc
-BuildRequires: libtool
 BuildRequires: libtool-devel
-BuildRequires: libxml2-devel
 BuildRequires: mysql-devel
 BuildRequires: postgresql-devel
-BuildRequires: raptor-devel
-BuildRequires: rasqal-devel >= 0.9.16
 BuildRequires: sqlite3-devel
-BuildRequires: swig
-BuildRequires: w3c-libwww-devel
+BuildRequires: rasqal-devel >= 0.9.22
+Conflicts: %{develname} <= 1.0.13
 Requires: rasqal
 Requires: raptor
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -59,30 +51,24 @@ Libraries and includes files for developing programs based on %name.
 
 %prep
 %setup -q
-#for now fix location of rasqal headers to match ours
-perl -pi -e 's/<rasqal.h>/<rasqal\/rasqal.h>/g' src/librdf.h
-perl -pi -e 's/<rasqal.h>/<rasqal\/rasqal.h>/g' src/rdf_init.h
-
-#%patch0 -p0 -b .orig
-#%patch1 -p1 -b .orig
 
 %build
 sh ./autogen.sh
 
 %configure2_5x \
+	--disable-static \
+	--without-included-ltdl \
 	--with-mysql \
 	--with-postgresql \
-	--with-raptor=system \
-	--with-rasqal=system \
 	--enable-gtk-doc
 
 %make
 
 %install
 rm -rf %{buildroot}
-# fix install command
-perl -p -i -e 's/install\ -c/install\ -D/g' `find -name Makefile`
 %makeinstall_std
+
+rm -f %buildroot%_libdir/%{name}/*.la
 
 %multiarch_binaries %{buildroot}%{_bindir}/redland-config
 
@@ -96,6 +82,8 @@ rm -rf %{buildroot}
 %doc *.html
 %_bindir/redland-db-upgrade
 %_bindir/rdfproc
+%dir %_libdir/%{name}
+%_libdir/%{name}/*.so
 %_datadir/%name
 %_mandir/man1/*
 %_mandir/man3/*
@@ -108,12 +96,8 @@ rm -rf %{buildroot}
 %defattr(-, root, root)
 %multiarch %{multiarch_bindir}/redland-config
 %_bindir/redland-config
-%_libdir/*.a
 %_libdir/*.la
 %_libdir/*.so
-%_libdir/%{name}/*.a
-%_libdir/%{name}/*.la
-%_libdir/%{name}/*.so
 %_includedir/redland.h
 %_includedir/librdf.h 
 %_includedir/rdf_*.h
