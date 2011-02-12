@@ -1,10 +1,10 @@
-%define major	0
+%define major   0
 %define libname %mklibname %name %major
 %define develname %mklibname -d %name
 
 Name: redland
 Version: 1.0.13
-Release: %mkrel 2
+Release: %mkrel 3
 License: LGPL
 Summary: Redland RDF Application Framework
 Group: Development/Other
@@ -17,7 +17,8 @@ BuildRequires: mysql-devel
 BuildRequires: postgresql-devel
 BuildRequires: sqlite3-devel
 BuildRequires: rasqal-devel >= 0.9.22
-Conflicts: %{develname} <= 1.0.13
+BuildRequires: gmp-devel
+Conflicts: %{develname} < 1.0.13
 Requires: rasqal
 Requires: raptor2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -42,7 +43,7 @@ Summary: Header files and static libraries from %name
 Group: Development/Other
 Requires: %{libname} >= %{version}
 Provides: lib%{name}-devel = %{version}-%{release}
-Provides: %{name}-devel = %{version}-%{release} 
+Provides: %{name}-devel = %{version}-%{release}
 Obsoletes: %name-devel
 Obsoletes: %{mklibname -d %name 0}
 
@@ -56,11 +57,11 @@ Libraries and includes files for developing programs based on %name.
 sh ./autogen.sh
 
 %configure2_5x \
-	--disable-static \
-	--without-included-ltdl \
-	--with-mysql \
-	--with-postgresql \
-	--enable-gtk-doc
+    --disable-static \
+    --without-included-ltdl \
+    --with-mysql \
+    --with-postgresql \
+    --enable-gtk-doc
 
 %make
 
@@ -99,7 +100,7 @@ rm -rf %{buildroot}
 %_libdir/*.la
 %_libdir/*.so
 %_includedir/redland.h
-%_includedir/librdf.h 
+%_includedir/librdf.h
 %_includedir/rdf_*.h
 %_libdir/pkgconfig/*.pc
 %_datadir/gtk-doc/*/*
