@@ -10,7 +10,7 @@ Summary: Redland RDF Application Framework
 Group: Development/Other
 Source: http://librdf.org/dist/source/%{name}-%{version}.tar.gz
 URL: http://librdf.org/
-BuildRequires: db4-devel
+BuildRequires: db5-devel
 BuildRequires: gtk-doc
 BuildRequires: libtool-devel
 BuildRequires: mysql-devel
