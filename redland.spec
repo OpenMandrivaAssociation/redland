@@ -4,7 +4,7 @@
 
 Name: redland
 Version: 1.0.13
-Release: %mkrel 3
+Release: %mkrel 4
 License: LGPL
 Summary: Redland RDF Application Framework
 Group: Development/Other
