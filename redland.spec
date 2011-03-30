@@ -42,8 +42,7 @@ Summary:	Header files and static libraries from %{name}
 Group:		Development/Other
 Requires:	%{libname} >= %{version}
 Provides:	lib%{name}-devel = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{name}-devel
+%rename		%{name}-devel
 Obsoletes:	%{mklibname -d %{name} 0}
 
 %description -n	%{develname}
