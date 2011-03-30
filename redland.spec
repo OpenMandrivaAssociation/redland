@@ -4,7 +4,7 @@
 
 Name: redland
 Version: 1.0.13
-Release: %mkrel 5
+Release: 6
 License: LGPL
 Summary: Redland RDF Application Framework
 Group: Development/Other
@@ -21,7 +21,6 @@ BuildRequires: gmp-devel
 Conflicts: %{develname} < 1.0.13
 Requires: rasqal
 Requires: raptor2
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Redland is a library that provides a high-level interface for RDF
@@ -66,15 +65,11 @@ sh ./autogen.sh
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 rm -f %buildroot%_libdir/%{name}/*.la
 
 %multiarch_binaries %{buildroot}%{_bindir}/redland-config
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
