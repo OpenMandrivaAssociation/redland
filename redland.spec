@@ -104,10 +104,3 @@ rm -rf %{buildroot}
 %_includedir/rdf_*.h
 %_libdir/pkgconfig/*.pc
 %_datadir/gtk-doc/*/*
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
