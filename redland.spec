@@ -41,7 +41,6 @@ Dynamic libraries from %{name}.
 Summary:	Header files and static libraries from %{name}
 Group:		Development/Other
 Requires:	%{libname} >= %{version}
-Provides:	lib%{name}-devel = %{version}-%{release}
 %rename		%{name}-devel
 Obsoletes:	%{mklibname -d %{name} 0}
 
