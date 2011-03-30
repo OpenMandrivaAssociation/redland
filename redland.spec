@@ -51,10 +51,9 @@ Libraries and includes files for developing programs based on %{name}.
 
 %prep
 %setup -q
-
-%build
 sh ./autogen.sh
 
+%build
 %configure2_5x	--disable-static \
 		--without-included-ltdl \
     		--with-mysql \
