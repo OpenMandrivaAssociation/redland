@@ -70,7 +70,6 @@ rm -f %{buildroot}%{_libdir}/%{name}/*.la
 %multiarch_binaries %{buildroot}%{_bindir}/redland-config
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS COPYING COPYING.LIB ChangeLog
 %doc README NEWS LICENSE.txt
 %doc *.html
@@ -83,11 +82,9 @@ rm -f %{buildroot}%{_libdir}/%{name}/*.la
 %{_mandir}/man3/*
 
 %files -n %libname
-%defattr(-,root,root)
 %{_libdir}/librdf.so.%{major}*
 
 %files -n %develname
-%defattr(-, root, root)
 %multiarch %{multiarch_bindir}/redland-config
 %{_bindir}/redland-config
 %{_libdir}/*.la
