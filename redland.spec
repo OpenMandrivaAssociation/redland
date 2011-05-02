@@ -4,7 +4,7 @@
 
 Name:		redland
 Version:	1.0.13
-Release:	6
+Release:	7
 License:	LGPLv2.1+ ASL 2.0
 Summary:	Redland RDF Application Framework
 Group:		Development/Other
@@ -83,7 +83,7 @@ rm -f %{buildroot}%{_libdir}/%{name}/*.la
 %{_libdir}/librdf.so.%{major}*
 
 %files -n %{develname}
-%multiarch %{multiarch_bindir}/redland-config
+%{multiarch_bindir}/redland-config
 %{_bindir}/redland-config
 %{_libdir}/*.la
 %{_libdir}/*.so
