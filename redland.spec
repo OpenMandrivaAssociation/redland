@@ -4,7 +4,7 @@
 
 Name:		redland
 Version:	1.0.14
-Release:	2
+Release:	1
 License:	LGPLv2.1+ ASL 2.0
 Summary:	Redland RDF Application Framework
 Group:		Development/Other
