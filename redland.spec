@@ -13,8 +13,8 @@ URL:		http://librdf.org/
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(rasqal)
+BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:	db-devel
-BuildRequires:	gtk-doc
 BuildRequires:	libtool-devel
 BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
