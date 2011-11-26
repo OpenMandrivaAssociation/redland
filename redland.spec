@@ -4,19 +4,20 @@
 
 Name:		redland
 Version:	1.0.14
-Release:	1
+Release:	2
 License:	LGPLv2.1+ ASL 2.0
 Summary:	Redland RDF Application Framework
 Group:		Development/Other
 Source0:	http://librdf.org/dist/source/%{name}-%{version}.tar.gz
 URL:		http://librdf.org/
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(sqlite3)
+BuildRequires:	pkgconfig(rasqal)
 BuildRequires:	db-devel
 BuildRequires:	gtk-doc
 BuildRequires:	libtool-devel
 BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
-BuildRequires:	sqlite3-devel
-BuildRequires:	rasqal-devel >= 0.9.22
 BuildRequires:	gmp-devel
 Conflicts:	%{develname} < 1.0.13
 Requires:	rasqal
@@ -40,8 +41,7 @@ Dynamic libraries from %{name}.
 %package -n	%{develname}
 Summary:	Header files and static libraries from %{name}
 Group:		Development/Other
-Requires:	%{libname} = %{version}
-%rename		%{name}-devel
+Provides:	lib%{name}-devel = %{version}-%{release}
 Obsoletes:	%{mklibname -d %{name} 0}
 
 %description -n	%{develname}
