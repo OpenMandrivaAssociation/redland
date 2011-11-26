@@ -11,7 +11,6 @@ Group:		Development/Other
 Source0:	http://librdf.org/dist/source/%{name}-%{version}.tar.gz
 URL:		http://librdf.org/
 BuildRequires:	db-devel
-BuildConflicts:	db1-devel
 BuildRequires:	gtk-doc
 BuildRequires:	libtool-devel
 BuildRequires:	mysql-devel
