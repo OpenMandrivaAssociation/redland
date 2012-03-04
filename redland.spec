@@ -3,18 +3,18 @@
 %define develname %mklibname -d %{name}
 
 Name:		redland
-Version:	1.0.14
-Release:	3
+Version:	1.0.15
+Release:	1
 License:	LGPLv2.1+ ASL 2.0
 Summary:	Redland RDF Application Framework
 Group:		Development/Other
-Source0:	http://librdf.org/dist/source/%{name}-%{version}.tar.gz
+Source0:	http://download.librdf.org/source/%{name}-%{version}.tar.gz
 URL:		http://librdf.org/
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(rasqal)
 BuildRequires:	pkgconfig(gtk-doc)
-BuildRequires:	db-devel
+BuildRequires:	db-devel >= 5.3
 BuildRequires:	libtool-devel
 BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
