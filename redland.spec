@@ -3,7 +3,7 @@
 %define develname %mklibname -d %{name}
 
 Name:		redland
-Version:	1.0.15
+Version:	1.0.16
 Release:	1
 License:	LGPLv2.1+ ASL 2.0
 Summary:	Redland RDF Application Framework
@@ -12,6 +12,7 @@ Source0:	http://download.librdf.org/source/%{name}-%{version}.tar.gz
 URL:		http://librdf.org/
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(sqlite3)
+BuildRequires:	pkgconfig(raptor2)
 BuildRequires:	pkgconfig(rasqal)
 BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:	db-devel >= 5.2
@@ -48,6 +49,13 @@ Obsoletes:	%{mklibname -d %{name} 0} < 1.0.15
 
 %description -n	%{develname}
 Libraries and includes files for developing programs based on %{name}.
+
+%track
+prog %name = {
+	url = http://librdf.org/
+	regex = %name-(__VER__)\.tar\.gz
+	version = %version
+}
 
 %prep
 %setup -q

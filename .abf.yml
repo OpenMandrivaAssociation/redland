@@ -1,2 +1,4 @@
+removed_sources:
+  redland-1.0.15.tar.gz: e93d6fafaeebdf9f15a1044be6f4a88270f007af
 sources:
-  "redland-1.0.15.tar.gz": e93d6fafaeebdf9f15a1044be6f4a88270f007af
+  redland-1.0.16.tar.gz: 0dc3d65bee6d580cae84ed261720b5b4e6b1f856
