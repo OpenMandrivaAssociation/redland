@@ -17,7 +17,7 @@ BuildRequires:	pkgconfig(rasqal)
 BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:	db-devel >= 5.2
 BuildRequires:	libtool-devel
-BuildRequires:	mysql-devel
+BuildRequires:	mariadb-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	gmp-devel
 Conflicts:	%{develname} < 1.0.13
