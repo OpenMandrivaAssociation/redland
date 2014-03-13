@@ -4,7 +4,7 @@
 
 Name:		redland
 Version:	1.0.16
-Release:	3
+Release:	4
 License:	LGPLv2.1+ ASL 2.0
 Summary:	RDF Application Framework
 Group:		Development/Other
@@ -17,7 +17,7 @@ BuildRequires:	pkgconfig(rasqal)
 BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:	db-devel >= 5.2
 BuildRequires:	libtool-devel
-BuildRequires:	mysql-devel
+BuildRequires:	mariadb-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	gmp-devel
 Conflicts:	%{develname} < 1.0.13
