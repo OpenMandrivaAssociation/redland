@@ -5,12 +5,12 @@
 Summary:	RDF Application Framework
 Name:		redland
 Version:	1.0.17
-Release:	5
+Release:	6
 License:	LGPLv2.1+ ASL 2.0
 Group:		Development/Other
 Url:		http://librdf.org/
 Source0:	http://download.librdf.org/source/%{name}-%{version}.tar.gz
-BuildRequires:	db-devel >= 6.0
+BuildRequires:	db-devel >= 6.1
 BuildRequires:	gmp-devel
 BuildRequires:	libtool-devel
 BuildRequires:	mariadb-devel
@@ -65,13 +65,12 @@ sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
 ./autogen.sh
 
 %build
-%configure2_5x \
-	--disable-static \
+%configure \
 	--without-included-ltdl \
     	--with-mysql \
     	--with-postgresql \
     	--enable-gtk-doc \
-	--with-bdb-dbname=db-6.0 \
+	--with-bdb-dbname=db-6.1 \
 	--with-bdb-lib=%{_libdir}
 
 %make
