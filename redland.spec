@@ -5,7 +5,7 @@
 Summary:	RDF Application Framework
 Name:		redland
 Version:	1.0.17
-Release:	6
+Release:	7
 License:	LGPLv2.1+ ASL 2.0
 Group:		Development/Other
 Url:		http://librdf.org/
