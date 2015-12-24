@@ -1,6 +1,7 @@
 %define major   0
 %define libname %mklibname rdf %{major}
 %define devname %mklibname -d rdf
+%define _disable_rebuild_configure 1
 
 Summary:	RDF Application Framework
 Name:		redland
