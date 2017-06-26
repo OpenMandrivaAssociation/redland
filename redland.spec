@@ -6,7 +6,7 @@
 Summary:	RDF Application Framework
 Name:		redland
 Version:	1.0.17
-Release:	9
+Release:	10
 License:	LGPLv2.1+ ASL 2.0
 Group:		Development/Other
 Url:		http://librdf.org/
@@ -79,8 +79,6 @@ sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
 %install
 %makeinstall_std
 
-%multiarch_binaries %{buildroot}%{_bindir}/redland-config
-
 %files
 %doc AUTHORS ChangeLog README NEWS
 %doc *.html
@@ -95,7 +93,6 @@ sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
 %{_libdir}/librdf.so.%{major}*
 
 %files -n %{devname}
-%{multiarch_bindir}/redland-config
 %{_bindir}/redland-config
 %{_includedir}/redland.h
 %{_includedir}/librdf.h
