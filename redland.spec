@@ -21,6 +21,8 @@ BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(raptor2)
 BuildRequires:	pkgconfig(rasqal)
+BuildRequires:	pkgconfig(libssl)
+BuildRequires:	pkgconfig(libcrypto)
 Requires:	rasqal
 Requires:	raptor2
 
