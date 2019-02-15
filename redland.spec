@@ -6,18 +6,18 @@
 Summary:	RDF Application Framework
 Name:		redland
 Version:	1.0.17
-Release:	13
+Release:	15
 License:	LGPLv2.1+ ASL 2.0
 Group:		Development/Other
 Url:		http://librdf.org/
 Source0:	http://download.librdf.org/source/%{name}-%{version}.tar.gz
-BuildRequires:	db-devel >= 6.2
+Patch0:		redland-1.0.17-fix-linking.patch
+BuildRequires:	db-devel >= 18.1
 BuildRequires:	gmp-devel
 BuildRequires:	libtool-devel
 BuildRequires:	mariadb-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(raptor2)
 BuildRequires:	pkgconfig(rasqal)
@@ -34,7 +34,7 @@ mechanisms and other elements. Redland is designed for applications
 developers to provide RDF support in their applications as well as
 for RDF developers to experiment with the technology.
 
-%package -n	%{libname}
+%package -n %{libname}
 Summary:	Dynamic libraries from %{name}
 Group:		System/Libraries
 Obsoletes:	%{_lib}redland0 < 1.0.17-1
@@ -42,7 +42,7 @@ Obsoletes:	%{_lib}redland0 < 1.0.17-1
 %description -n %{libname}
 Dynamic libraries from %{name}.
 
-%package -n	%{devname}
+%package -n %{devname}
 Summary:	Header files and static libraries from %{name}
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
@@ -50,36 +50,27 @@ Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{_lib}redland-devel < 1.0.17-1
 Conflicts:	redland < 1.0.17-1
 
-%description -n	%{devname}
+%description -n %{devname}
 Libraries and includes files for developing programs based on %{name}.
 
-%track
-prog %{name} = {
-	url = http://librdf.org/
-	regex = %{name}-(__VER__)\.tar\.gz
-	version = %{version}
-}
-
 %prep
-%setup -q
+%autosetup -p1
 # hack to nuke rpaths
 sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
-
-./autogen.sh
 
 %build
 %configure \
 	--without-included-ltdl \
-    	--with-mysql \
-    	--with-postgresql \
-    	--enable-gtk-doc \
-	--with-bdb-dbname=db-6.2 \
+	--with-mysql \
+	--with-postgresql \
+	--disable-gtk-doc \
+	--with-bdb-dbname=db-18.1 \
 	--with-bdb-lib=%{_libdir}
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files
 %doc AUTHORS ChangeLog README NEWS
@@ -88,8 +79,8 @@ sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
 %{_bindir}/redland-db-upgrade
 %{_libdir}/%{name}/
 %{_datadir}/%{name}/
-%{_mandir}/man1/rdfproc.1*
-%{_mandir}/man1/redland-db-upgrade.1*
+%doc %{_mandir}/man1/rdfproc.1*
+%doc %{_mandir}/man1/redland-db-upgrade.1*
 
 %files -n %{libname}
 %{_libdir}/librdf.so.%{major}*
@@ -102,6 +93,6 @@ sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
 %{_datadir}/gtk-doc/*/*
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/librdf.so
-%{_mandir}/man1/redland-config.1*
-%{_mandir}/man3/*
+%doc %{_mandir}/man1/redland-config.1*
+%doc %{_mandir}/man3/*
 

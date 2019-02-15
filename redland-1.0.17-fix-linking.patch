@@ -1,0 +1,83 @@
+diff -Naur redland-1.0.17/src/Makefile.am redland-1.0.17.tpg/src/Makefile.am
+--- redland-1.0.17/src/Makefile.am	2013-11-13 22:54:40.000000000 +0000
++++ redland-1.0.17.tpg/src/Makefile.am	2021-10-18 11:57:24.691602754 +0000
+@@ -117,7 +117,7 @@
+ plugin_LTLIBRARIES += librdf_storage_tstore.la
+ librdf_storage_tstore_la_SOURCES = rdf_storage_tstore.c
+ librdf_storage_tstore_la_CPPFLAGS = @TSTORE_CPPFLAGS@
+-librdf_storage_tstore_la_LIBADD = @TSTORE_LIBS@ librdf.la
++librdf_storage_tstore_la_LIBADD = @TSTORE_LIBS@ librdf.la @LIBRDF_DIRECT_LIBS@
+ librdf_storage_tstore_la_LDFLAGS = -module -avoid-version
+ endif
+ 
+@@ -125,7 +125,7 @@
+ plugin_LTLIBRARIES += librdf_storage_mysql.la
+ librdf_storage_mysql_la_SOURCES = rdf_storage_mysql.c
+ librdf_storage_mysql_la_CPPFLAGS = @MYSQL_CPPFLAGS@
+-librdf_storage_mysql_la_LIBADD = @MYSQL_LIBS@ librdf.la
++librdf_storage_mysql_la_LIBADD = @MYSQL_LIBS@ librdf.la @LIBRDF_DIRECT_LIBS@
+ librdf_storage_mysql_la_LDFLAGS = -module -avoid-version
+ endif
+ 
+@@ -136,7 +136,7 @@
+ # ones for SQLITE headers.  There is no other way to adjust the
+ # automake-generated rule to ensure this.
+ librdf_storage_sqlite_la_CPPFLAGS = $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) @SQLITE_CFLAGS@
+-librdf_storage_sqlite_la_LIBADD = @SQLITE_LIBS@ librdf.la
++librdf_storage_sqlite_la_LIBADD = @SQLITE_LIBS@ librdf.la @LIBRDF_DIRECT_LIBS@
+ librdf_storage_sqlite_la_LDFLAGS = -module -avoid-version
+ endif
+ 
+@@ -144,7 +144,7 @@
+ plugin_LTLIBRARIES += librdf_storage_postgresql.la
+ librdf_storage_postgresql_la_SOURCES = rdf_storage_postgresql.c
+ librdf_storage_postgresql_la_CPPFLAGS = @POSTGRESQL_CPPFLAGS@
+-librdf_storage_postgresql_la_LIBADD = @POSTGRESQL_LIBS@ librdf.la
++librdf_storage_postgresql_la_LIBADD = @POSTGRESQL_LIBS@ librdf.la @LIBRDF_DIRECT_LIBS@
+ librdf_storage_postgresql_la_LDFLAGS = -module -avoid-version
+ endif
+ 
+@@ -152,7 +152,7 @@
+ plugin_LTLIBRARIES += librdf_storage_virtuoso.la 
+ librdf_storage_virtuoso_la_SOURCES = rdf_storage_virtuoso.c rdf_query_virtuoso.c rdf_storage_virtuoso_internal.h
+ librdf_storage_virtuoso_la_CPPFLAGS = @ODBC_CFLAGS@
+-librdf_storage_virtuoso_la_LIBADD = @ODBC_LIBS@ librdf.la -lrasqal
++librdf_storage_virtuoso_la_LIBADD = @ODBC_LIBS@ librdf.la -lrasqal @LIBRDF_DIRECT_LIBS@ @LIBRDF_EXTERNAL_LIBS@
+ librdf_storage_virtuoso_la_LDFLAGS = -module -avoid-version
+ endif
+ 
+diff -Naur redland-1.0.17/src/Makefile.in redland-1.0.17.tpg/src/Makefile.in
+--- redland-1.0.17/src/Makefile.in	2013-12-28 16:26:52.000000000 +0000
++++ redland-1.0.17.tpg/src/Makefile.in	2021-10-18 11:57:24.691602754 +0000
+@@ -595,26 +595,26 @@
+ @MODULAR_LIBRDF_TRUE@	$(am__append_6) $(am__append_7)
+ @MODULAR_LIBRDF_TRUE@@STORAGE_TSTORE_TRUE@librdf_storage_tstore_la_SOURCES = rdf_storage_tstore.c
+ @MODULAR_LIBRDF_TRUE@@STORAGE_TSTORE_TRUE@librdf_storage_tstore_la_CPPFLAGS = @TSTORE_CPPFLAGS@
+-@MODULAR_LIBRDF_TRUE@@STORAGE_TSTORE_TRUE@librdf_storage_tstore_la_LIBADD = @TSTORE_LIBS@ librdf.la
++@MODULAR_LIBRDF_TRUE@@STORAGE_TSTORE_TRUE@librdf_storage_tstore_la_LIBADD = @TSTORE_LIBS@ librdf.la @LIBRDF_DIRECT_LIBS@
+ @MODULAR_LIBRDF_TRUE@@STORAGE_TSTORE_TRUE@librdf_storage_tstore_la_LDFLAGS = -module -avoid-version
+ @MODULAR_LIBRDF_TRUE@@STORAGE_MYSQL_TRUE@librdf_storage_mysql_la_SOURCES = rdf_storage_mysql.c
+ @MODULAR_LIBRDF_TRUE@@STORAGE_MYSQL_TRUE@librdf_storage_mysql_la_CPPFLAGS = @MYSQL_CPPFLAGS@
+-@MODULAR_LIBRDF_TRUE@@STORAGE_MYSQL_TRUE@librdf_storage_mysql_la_LIBADD = @MYSQL_LIBS@ librdf.la
++@MODULAR_LIBRDF_TRUE@@STORAGE_MYSQL_TRUE@librdf_storage_mysql_la_LIBADD = @MYSQL_LIBS@ librdf.la @LIBRDF_DIRECT_LIBS@
+ @MODULAR_LIBRDF_TRUE@@STORAGE_MYSQL_TRUE@librdf_storage_mysql_la_LDFLAGS = -module -avoid-version
+ @MODULAR_LIBRDF_TRUE@@STORAGE_SQLITE_TRUE@librdf_storage_sqlite_la_SOURCES = rdf_storage_sqlite.c
+ # This extra substitution is to ensure general -I paths appear before
+ # ones for SQLITE headers.  There is no other way to adjust the
+ # automake-generated rule to ensure this.
+ @MODULAR_LIBRDF_TRUE@@STORAGE_SQLITE_TRUE@librdf_storage_sqlite_la_CPPFLAGS = $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) @SQLITE_CFLAGS@
+-@MODULAR_LIBRDF_TRUE@@STORAGE_SQLITE_TRUE@librdf_storage_sqlite_la_LIBADD = @SQLITE_LIBS@ librdf.la
++@MODULAR_LIBRDF_TRUE@@STORAGE_SQLITE_TRUE@librdf_storage_sqlite_la_LIBADD = @SQLITE_LIBS@ librdf.la @LIBRDF_DIRECT_LIBS@
+ @MODULAR_LIBRDF_TRUE@@STORAGE_SQLITE_TRUE@librdf_storage_sqlite_la_LDFLAGS = -module -avoid-version
+ @MODULAR_LIBRDF_TRUE@@STORAGE_POSTGRESQL_TRUE@librdf_storage_postgresql_la_SOURCES = rdf_storage_postgresql.c
+ @MODULAR_LIBRDF_TRUE@@STORAGE_POSTGRESQL_TRUE@librdf_storage_postgresql_la_CPPFLAGS = @POSTGRESQL_CPPFLAGS@
+-@MODULAR_LIBRDF_TRUE@@STORAGE_POSTGRESQL_TRUE@librdf_storage_postgresql_la_LIBADD = @POSTGRESQL_LIBS@ librdf.la
++@MODULAR_LIBRDF_TRUE@@STORAGE_POSTGRESQL_TRUE@librdf_storage_postgresql_la_LIBADD = @POSTGRESQL_LIBS@ librdf.la @LIBRDF_DIRECT_LIBS@
+ @MODULAR_LIBRDF_TRUE@@STORAGE_POSTGRESQL_TRUE@librdf_storage_postgresql_la_LDFLAGS = -module -avoid-version
+ @MODULAR_LIBRDF_TRUE@@STORAGE_VIRTUOSO_TRUE@librdf_storage_virtuoso_la_SOURCES = rdf_storage_virtuoso.c rdf_query_virtuoso.c rdf_storage_virtuoso_internal.h
+ @MODULAR_LIBRDF_TRUE@@STORAGE_VIRTUOSO_TRUE@librdf_storage_virtuoso_la_CPPFLAGS = @ODBC_CFLAGS@
+-@MODULAR_LIBRDF_TRUE@@STORAGE_VIRTUOSO_TRUE@librdf_storage_virtuoso_la_LIBADD = @ODBC_LIBS@ librdf.la -lrasqal
++@MODULAR_LIBRDF_TRUE@@STORAGE_VIRTUOSO_TRUE@librdf_storage_virtuoso_la_LIBADD = @ODBC_LIBS@ librdf.la -lrasqal @LIBRDF_DIRECT_LIBS@ @LIBRDF_EXTERNAL_LIBS@
+ @MODULAR_LIBRDF_TRUE@@STORAGE_VIRTUOSO_TRUE@librdf_storage_virtuoso_la_LDFLAGS = -module -avoid-version
+ librdf_la_LIBADD = \
+ @LTLIBOBJS@ @DIGEST_OBJS@ @HASH_OBJS@ \
