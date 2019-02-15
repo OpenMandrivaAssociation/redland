@@ -6,12 +6,12 @@
 Summary:	RDF Application Framework
 Name:		redland
 Version:	1.0.17
-Release:	13
+Release:	14
 License:	LGPLv2.1+ ASL 2.0
 Group:		Development/Other
 Url:		http://librdf.org/
 Source0:	http://download.librdf.org/source/%{name}-%{version}.tar.gz
-BuildRequires:	db-devel >= 6.2
+BuildRequires:	db-devel >= 18.1
 BuildRequires:	gmp-devel
 BuildRequires:	libtool-devel
 BuildRequires:	mariadb-devel
@@ -73,7 +73,7 @@ sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
     	--with-mysql \
     	--with-postgresql \
     	--enable-gtk-doc \
-	--with-bdb-dbname=db-6.2 \
+	--with-bdb-dbname=db-18.1 \
 	--with-bdb-lib=%{_libdir}
 
 %make
