@@ -9,7 +9,7 @@ Version:	1.0.17
 Release:	16
 License:	LGPLv2.1+ ASL 2.0
 Group:		Development/Other
-Url:		http://librdf.org/
+Url:		https://librdf.org/
 Source0:	http://download.librdf.org/source/%{name}-%{version}.tar.gz
 Patch0:		redland-1.0.17-fix-linking.patch
 BuildRequires:	db-devel >= 18.1
